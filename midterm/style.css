@@ -1,3 +1,4 @@
+
 /* GENERAL */
 body {
   margin: 0;
@@ -324,6 +325,7 @@ a {
 
 /* TABLET */
 @media (max-width: 767px) {
+
   .header {
     flex-direction: column;
   }
@@ -337,7 +339,6 @@ a {
     font-size: 12px;
   }
 
-  /* HERO BACKGROUND ON TABLETS AND PHONES */
   .hero {
     min-height: 400px;
     background-color: white;
@@ -372,6 +373,7 @@ a {
 
 /* SMALL MOBILE PHONES */
 @media (max-width: 400px) {
+
   .logo {
     font-size: 22px;
   }
@@ -403,5 +405,108 @@ a {
 
   .product-image {
     height: 200px;
+  }
+}
+
+/* ==========================================
+   MIDTERM TASK 1: CSS ONLY CATEGORY FILTER
+
+   Roll Number: FA24-BCS-025
+   N = 25
+   BP = 625px
+   H = 175
+   K = 4
+   ========================================== */
+
+/* PERSONAL ACCENT COLOUR */
+:root {
+  --midterm-accent: hsl(175, 70%, 45%);
+}
+
+/* CATEGORY FILTER CONTAINER */
+.category-filter {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 25px 0 30px;
+}
+
+/* FILTER TITLE */
+.filter-title {
+  width: 100%;
+  color: #29211f;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+/* HIDE RADIO BUTTON CIRCLES */
+.category-filter input[type="radio"] {
+  display: none;
+}
+
+/* CATEGORY LABELS */
+.category-filter label {
+  display: inline-block;
+  padding: 10px 18px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  background: white;
+  color: #29211f;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.2s ease,
+              color 0.2s ease,
+              border-color 0.2s ease;
+}
+
+/* HOVER EFFECT */
+.category-filter label:hover {
+  border-color: var(--midterm-accent);
+  color: var(--midterm-accent);
+}
+
+/* SELECTED FILTER */
+.category-filter input[type="radio"]:checked + label {
+  background: var(--midterm-accent);
+  border-color: var(--midterm-accent);
+  color: white;
+}
+
+/* CATEGORY FILTERING USING CSS ONLY */
+.product-section:has(#filter-hot:checked)
+.filter-item:not(.category-hot),
+
+.product-section:has(#filter-milk:checked)
+.filter-item:not(.category-milk),
+
+.product-section:has(#filter-iced:checked)
+.filter-item:not(.category-iced),
+
+.product-section:has(#filter-flavoured:checked)
+.filter-item:not(.category-flavoured) {
+  display: none;
+}
+
+/* HIDE IRRELEVANT PRODUCT SECTION HEADINGS */
+.product-section:has(#filter-hot:checked) #cold-coffees,
+.product-section:has(#filter-milk:checked) #cold-coffees,
+.product-section:has(#filter-iced:checked) #hot-coffees,
+.product-section:has(#filter-flavoured:checked) #hot-coffees {
+  display: none;
+}
+
+/* MOBILE FILTER RESPONSIVENESS */
+@media (max-width: 575px) {
+
+  .category-filter {
+    gap: 8px;
+  }
+
+  .category-filter label {
+    padding: 8px 12px;
+    font-size: 12px;
   }
 }
